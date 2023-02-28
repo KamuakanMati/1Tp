@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Walidacja danych</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <form action="walidacja.php" method="post" onsubmit="return walidacja_danych(this);">
+        Uczeń:
+        <hr>
+            <table>
+                <tr>
+                    <td>Imię i nazwisko:</td>
+                    <td><input type="text" name="imaz" id="imaz" required pattern="[A-ząćęłńóśźżĄĘŁŃÓŚŹŻ]{3,}\s[A-ząćęłńóśźżĄĘŁŃÓŚŹŻ]{3,}">*</td> 
+                </tr>
+                <tr>
+                    <td>E-mail:</td>
+                    <td><input type="email" name="email" id="email">*</td>
+                </tr>
+                <tr>
+                    <td>Ocena:</td>
+                    <td><input type="number" name="ocena" id="ocena" min="1" max="6">*</td> 
+                </tr>
+                <tr>
+                    <td>Data:</td>
+                    <td><input type="datetime-local" name="data" id="data">*</td>
+                </tr>
+            </table>
+            <input type="submit" value="wyślij">
+            <input type="reset" value="reset">
+            <hr>
+            Uwaga!<br>
+            Pola oznaczone * są obowiązkowe
+        </form>
+    </body>
+    </html>
+
+
+    <script>
+        function walidacja_danych (form){
+     if(document.getElementById("imaz").value == ""){
+        alert("wpisz imię i nazwisko");
+        form.imaz.focus();
+        return false;
+    }else if(document.getElementById("imaz").value.length < 3){
+        alert("MUSISZ WPISAĆ IMIĘ ORAZ NAZWISKO");
+        form.imaz.focus();
+        return false;
+    }
+
+    if(document.getElementById("email").value == ""){
+        alert("wpisz E-mail");
+        form.email.focus();
+        return false
+    } else if(document.getElementById("email").value.length < 3){
+        alert("E-MAIL MUSI MIEĆ ZNAK @");
+        form.email.focus();
+        return false;
+    }
+
+    if(document.getElementById("ocena").value == ""){
+        alert("wpisz ocenę ucznia")
+        form.ocena.focus();
+        return false;
+    }
+
+    if(document.getElementById("data").value == ""){
+        alert("wpisz date");
+        form.data.focus();
+        return false
+    } else if(document.getElementById("data").value.length < 3){
+        alert("MUSZISZ WPISAĆ DATE");
+        form.data.focus();
+        return false;
+    }
+
+    return true;
+}
+    </script>
