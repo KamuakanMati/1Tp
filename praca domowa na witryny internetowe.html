@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Gra dla witryny interenetowe</title>
+</head>
+<body>
+	<p id='p1'>30 s</p>
+	<p id='p2'>Wpisz wyraz wg. wzoru (masz 30s):</p>
+	<input type='text' id='txt'>
+	<input type='button' onclick='praca()' id='btn' value='start'>
+</body>
+</html>
+
+<script>
+var wynik = 0
+var czas = 30
+var wyr = ['[0-9]','[3-8]$','[0-5]{2}','[0-7]{3}']
+const praca = () => {
+
+	if(document.getElementById('btn').value == 'start') {
+		document.getElementById('btn').value = 'wyslij'
+		document.getElementById('p2').innerText = wyr[wynik]
+		var interval = setInterval(() => {
+			czas -= 1
+			document.getElementById('p1').innerText = czas + ' s'
+
+	if(czas == 0) {
+		clearInterval(interval)
+		document.getElementById('p1').innerHTML = `<h1>KONIEC GRY!</h1><h1>Wynik: ${wynik}</h1><h1>Czas: 30</h1>`
+		document.getElementById('p2').style.display = 'none'
+		document.getElementById('txt').disabled = true
+		document.getElementById('txt').value = ''
+		document.getElementById('txt').style.background = 'white'
+		document.getElementById('btn').disabled = true
+	}
+
+}, 1000)
+
+	}
+	else if(document.getElementById('btn').value == 'next') {
+		document.getElementById('txt').style.background = 'white'
+		document.getElementById('txt').value = ''
+		document.getElementById('btn').value = 'wyslij'
+		document.getElementById('p2').innerText = wyr[wynik]
+	} 
+	else {
+		if(RegExp(document.getElementById('p2').innerText).test(document.getElementById('txt').value)) {
+			document.getElementById('txt').style.background = 'green'
+			wynik += 1
+			document.getElementById('btn').value = 'next'
+		}
+
+		else {
+			document.getElementById('txt').style.background = 'red'
+		}
+	}
+}
+</script>
