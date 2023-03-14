@@ -22,8 +22,8 @@ const praca = () => {
 		document.getElementById('btn').value = 'wyslij'
 		document.getElementById('p2').innerText = wyr[wynik]
 		var interval = setInterval(() => {
-			czas -= 1
-			document.getElementById('p1').innerText = czas + ' s'
+		czas -= 1
+		document.getElementById('p1').innerText = czas + ' s'
 
 	if(czas == 0) {
 		clearInterval(interval)
@@ -34,9 +34,7 @@ const praca = () => {
 		document.getElementById('txt').style.background = 'white'
 		document.getElementById('btn').disabled = true
 	}
-
 }, 1000)
-
 	}
 	else if(document.getElementById('btn').value == 'next') {
 		document.getElementById('txt').style.background = 'white'
@@ -46,11 +44,10 @@ const praca = () => {
 	} 
 	else {
 		if(RegExp(document.getElementById('p2').innerText).test(document.getElementById('txt').value)) {
-			document.getElementById('txt').style.background = 'green'
-			wynik += 1
-			document.getElementById('btn').value = 'next'
-		}
-
+		document.getElementById('txt').style.background = 'green'
+		wynik += 1
+		document.getElementById('btn').value = 'next'
+	}
 		else {
 			document.getElementById('txt').style.background = 'red'
 		}
