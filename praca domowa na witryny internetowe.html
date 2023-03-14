@@ -15,7 +15,7 @@
 <script>
 var wynik = 0
 var czas = 30
-var wyr = ['[0-9]','[3-8]$','[0-5]{2}','[0-7]{3}']
+var wyr = ['[0-9]','^ab','ba$','[^2-8$]']
 const praca = () => {
 
 	if(document.getElementById('btn').value == 'start') {
