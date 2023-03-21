@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Canvas</title>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="1800" height="1300"
+        style="border:1px solid green">
+        </canvas>
+        <script>
+        var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+      var x = 0;
+      const auto = new Image();
+      auto.src="mucha.png"
+      
+    function face(){  
+      ctx.fillStyle = "grey";
+      ctx.fillRect(0,0,1800,1600);
+      
+      ctx.fillStyle = "#ffeb99";
+      ctx.beginPath();
+      ctx.arc(350, 800, 300, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.fill();
+      
+      ctx.fillStyle = "blue";
+      ctx.fillRect(200,650,100,100);
+      ctx.clearRect(250 - x, 670, 30, 30);
+      ctx.fillStyle = "green";
+      ctx.fillRect(400, 650, 100, 100);
+      ctx.clearRect(410 - x, 670, 30, 30);
+      
+      ctx.strokeRect(300, 750, 100, 100);//lewo, gora, wielkosc lewo, wielkosc gora
+      
+      ctx.beginPath();
+      ctx.moveTo(400, 900);
+      ctx.quadraticCurveTo(100,1000+2*x, 500, 1000);
+      ctx.stroke();
+
+      ctx.drawImage(auto, 300-10*x,50);
+
+      x++; 
+      if(x > 50){
+        x = -x;
+      }
+      
+    }
+window.setInterval(face, 10);
+      </script>
+    </body>
+</html>
+
